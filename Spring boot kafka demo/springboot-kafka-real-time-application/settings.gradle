@@ -1,0 +1,3 @@
+rootProject.name = 'springboot-kafka-real-time-application'
+include 'kafka-producer-wikimedia'
+

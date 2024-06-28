@@ -1,0 +1,28 @@
+version: "3.8"
+
+services:
+  postgresqldb:
+    container_name: postgresdb
+    image: postgres:15
+    environment:
+      - POSTGRES_PASSWORD=12345
+      - POSTGRES_DB=employeedb
+    networks:
+      spring-boot-postgres-net:
+
+  spring-boot-rest-api:
+    container_name: spring-boot-rest-api
+    image: waghsudam22/spring-boot-project-image
+    ports:
+      - "8090:8080"
+    depends_on:
+      - postgresqldb
+    networks:
+      spring-boot-postgres-net:
+    restart: on-failure
+
+
+
+
+networks:
+  spring-boot-postgres-net:
